@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header-row">
+    <h2 class="title">System Info</h2>
+  </div>
+
+  <!-- Clock -->
+  <div class="card fade basic-card">
+    <div class="clock-container">
+      <div id="clock" class="clock"></div>
+      <div id="date" class="date"></div>
+    </div>
+  </div>
+
+  <!-- Battery -->
+  <div class="card fade basic-card">
+    <h3>Battery</h3>
+    <div class="battery-container">
+      <div class="battery-outer" id="battery-outer">
+        <div class="battery-inner" id="battery-fill"></div>
+      </div>
+      <p>
+  <span id="battery-text">--%</span>
+  &nbsp;
+  <span id="battery-status" style="font-size:12px; color:#8ba0c5">Loading...</span>
+  <!-- CHARGING ICON (hidden by default) -->
+  <img id="battery-icon" alt="charging" style="display:none; vertical-align:middle; margin-left:8px;" />
+</p>
+
+    </div>
+  </div>
+
+
+  <!-- Wi-Fi: connected only -->
+  <div class="card fade basic-card">
+    <h3>Wi-Fi</h3>
+    <div id="wifi-credentials" style="margin-top: 8px; font-size: 13px;">
+      <p><strong>Connected Wi-Fi:</strong> <span id="wifi-ssid">Loading...</span></p>
+      <p>
+        <strong>Password:</strong>
+        <span id="wifi-password">********</span>
+        <button id="wifi-toggle" class="tiny-toggle-btn">Show</button>
+      </p>
+    </div>
+    <button class="btn small-btn" id="copy-wifi">Copy Wi-Fi Details</button>
+    <p id="wifi-copy-status" class="copy-status"></p>
+  </div>
+
+  <!-- Tasks (dynamic list) -->
+  <div class="card fade basic-card">
+    <h3>Tasks</h3>
+
+    <ul id="task-list" class="task-list"></ul>
+
+    <button class="btn small-btn" id="add-task-btn">Add Task</button>
+    <p class="copy-status" id="task-hint">
+      Tip: You can add multiple tasks. Use the ✕ button to delete.
+    </p>
+  </div>
+
+  <!-- Device Info (hostname + IP only) -->
+  <div class="card fade advanced-card">
+    <h3>Device Info</h3>
+    <p>
+      <strong>Hostname:</strong>
+      <span id="device-hostname">********</span>
+      <button id="device-host-toggle" class="tiny-toggle-btn">Show</button>
+    </p>
+    <p>
+      <strong>IP Address:</strong>
+      <span id="device-ip">********</span>
+      <button id="device-ip-toggle" class="tiny-toggle-btn">Show</button>
+    </p>
+    <button class="btn small-btn" id="copy-device">Copy Device Info</button>
+    <p id="device-copy-status" class="copy-status"></p>
+  </div>
+
+  <!-- Network Troubleshooter -->
+  <div class="card fade basic-card">
+    <h3>Network Troubleshooter</h3>
+
+    <button class="btn small-btn" id="check-internet">Check Internet</button>
+    <p id="internet-status" class="copy-status"></p>
+
+    <button class="btn small-btn" id="check-publicip">Check Public IP</button>
+    <p id="publicip-status" class="copy-status"></p>
+
+    <input
+      id="dns-domain"
+      class="task-input"
+      placeholder="example.com"
+      style="width: 100%; margin-top: 10px;"
+    />
+    <button class="btn small-btn" id="check-dns-domain">Check DNS for Domain</button>
+    <p id="dns-domain-status" class="copy-status"></p>
+
+    <!-- DNS details (raw dig/nslookup output) -->
+    <div id="dns-domain-details" style="display:none; margin-top: 6px;">
+      <details>
+        <summary style="cursor:pointer; font-size:12px; color:#8ba0c5;">
+          Show DNS details
+        </summary>
+        <pre id="dns-domain-output"
+             style="margin-top:4px; max-height:140px; overflow:auto; font-size:11px; background:#0c1118; padding:6px; border-radius:6px; border:1px solid rgba(90,140,200,0.5);">
+        </pre>
+      </details>
+    </div>
+  </div>
+
+  <!-- Linux shortcuts -->
+  <div class="card fade basic-card">
+    <h3>Linux Shortcuts</h3>
+    <ul class="shortcut-list">
+      <li><strong>Super (Windows key):</strong> App Launcher</li>
+      <li><strong>Alt + Tab:</strong> Switch apps</li>
+      <li><strong>Ctrl + L:</strong> Focus URL bar (browser)</li>
+      <li><a href="https://www.hostinger.com/in/tutorials/linux-commands?utm_campaign=Generic-Tutorials-DSA-test|NT:Se|Lang:EN|LO:IN&utm_medium=ppc&gad_source=1&gad_campaignid=23251695594&gbraid=0AAAAADMy-hZq16knASHXVeHlA3ji1JAJf&gclid=CjwKCAiA0eTJBhBaEiwA-Pa-haKyQEY5KVkbW_jKChmlnciqK4bgeBzUtOpaV4J47LM5XRjipHPhOxoCqPMQAvD_BwE" target="_blank"> <strong>More Command's</strong> </a></li>
+    </ul>
+  </div>
+
+</div>
+
+<script src="popup.js"></script>
+
+</body>
+</html>

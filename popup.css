@@ -1,0 +1,329 @@
+/* Reset body */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #121417;
+  color: #cfd8f7;
+  margin: 0;
+  padding: 20px;
+  width: 340px;
+  overflow-y: auto;
+  user-select: none;
+}
+
+/* Container and layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header row */
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Title with glowing text */
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #5ed0ff;
+  text-align: left;
+  text-shadow:
+    0 0 5px #5ed0ff,
+    0 0 15px #26a3ff,
+    0 0 20px #26a3ff;
+  animation: pulseGlow 2.5s infinite alternate ease-in-out;
+  margin: 0;
+}
+
+/* Pulse glow for title */
+@keyframes pulseGlow {
+  from {
+    text-shadow:
+      0 0 5px #5ed0ff,
+      0 0 15px #26a3ff,
+      0 0 20px #26a3ff;
+  }
+  to {
+    text-shadow:
+      0 0 15px #00eaff,
+      0 0 25px #00c0ff,
+      0 0 40px #0090ff;
+  }
+}
+
+/* Card style */
+.card {
+  background: rgba(30, 35, 50, 0.8);
+  border-radius: 15px;
+  padding: 18px 22px;
+  box-shadow:
+    0 0 20px rgba(0, 160, 255, 0.15),
+    inset 0 0 15px rgba(0, 200, 255, 0.25);
+  border: 1px solid rgba(0, 140, 255, 0.25);
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Stagger fade-in for multiple cards */
+.card:nth-of-type(1) { animation-delay: 0.15s; }
+.card:nth-of-type(2) { animation-delay: 0.3s; }
+.card:nth-of-type(3) { animation-delay: 0.45s; }
+.card:nth-of-type(4) { animation-delay: 0.6s; }
+.card:nth-of-type(5) { animation-delay: 0.75s; }
+
+/* Fade and slide up animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Headings inside cards */
+.card h3 {
+  margin-top: 0;
+  color: #33caff;
+  text-shadow: 0 0 6px #33caff;
+  font-weight: 600;
+  font-size: 18px;
+  user-select: text;
+}
+
+/* Paragraphs */
+.card p {
+  font-size: 14px;
+  color: #a0b6d1;
+  margin: 8px 0 0 0;
+  user-select: text;
+}
+
+.card p strong {
+  color: #6dd8ff;
+  user-select: text;
+}
+
+/* Clock styling */
+.clock-container {
+  text-align: center;
+}
+
+.clock {
+  font-size: 36px;
+  font-weight: 700;
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaff;
+  letter-spacing: 1.2px;
+}
+
+.date {
+  color: #70a0ff;
+  margin-top: 4px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Battery container */
+.battery-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* battery charging icon */
+#battery-icon {
+  width: 18px;
+  height: 18px;
+  object-fit:contain;
+  filter: drop-shadow(0 1px 4px rgba(60,200,120,0.25));
+}
+
+.battery-outer {
+  width: 70px;
+  height: 32px;
+  border: 3px solid #00ff95;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 0 12px #00ff95 inset;
+}
+
+.battery-outer::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 9px;
+  width: 8px;
+  height: 14px;
+  background: #00ff95;
+  border-radius: 3px;
+  box-shadow: 0 0 12px #00ff95;
+}
+
+.battery-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ff95, #00ffa2);
+  border-radius: 5px 0 0 5px;
+  transition: width 1s ease;
+  box-shadow: 0 0 8px #00ffa2;
+}
+
+#battery-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #00ff9f;
+  text-shadow: 0 0 8px #00ff9f;
+  user-select: none;
+}
+
+/* Battery low pulsing glow */
+.battery-outer.low {
+  border-color: #ff5b5b;
+  box-shadow:
+    0 0 12px rgba(255, 91, 91, 0.8) inset,
+    0 0 16px rgba(255, 80, 80, 0.9);
+  animation: batteryPulse 1s infinite alternate;
+}
+
+@keyframes batteryPulse {
+  from {
+    box-shadow:
+      0 0 6px rgba(255, 91, 91, 0.7) inset,
+      0 0 8px rgba(255, 80, 80, 0.9);
+  }
+  to {
+    box-shadow:
+      0 0 14px rgba(255, 91, 91, 1) inset,
+      0 0 18px rgba(255, 40, 40, 1);
+  }
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 10px 0;
+  background: linear-gradient(90deg, #009dff, #00d1ff);
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  box-shadow: 0 0 12px #00d1ff;
+}
+
+.btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 24px #00f0ff;
+}
+
+/* Small buttons for quick launcher / connect */
+.small-btn {
+  padding: 6px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* Timer Styles */
+.timer-display {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin: 10px 0;
+  color: #00eaff;
+  text-shadow: 0 0 8px #00eaff;
+}
+
+.timer-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* Tasks */
+.task-input {
+  width: 180px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #76baff;
+  color: #cfe8ff;
+  outline: none;
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+/* Shortcuts List */
+.shortcut-list {
+  padding-left: 16px;
+  margin: 8px 0 0 0;
+}
+
+.shortcut-list li {
+  margin: 4px 0;
+  color: #a7c7ff;
+  font-size: 14px;
+}
+
+/* Small buttons (copy buttons etc.) */
+.small-btn {
+  padding: 6px;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* Copy status text */
+.copy-status {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #8ba0c5;
+}
+
+/* Tiny Show/Hide button next to Wi-Fi password */
+.tiny-toggle-btn {
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(120, 190, 255, 0.8);
+  background: rgba(10, 25, 45, 0.9);
+  color: #9fd6ff;
+  cursor: pointer;
+}
+
+.tiny-toggle-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Dynamic task list */
+.task-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 6px 0 0 0;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 3px 0;
+}
+
+.task-delete-btn {
+  border: none;
+  background: transparent;
+  color: #ff8080;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.task-delete-btn:hover {
+  color: #ffb0b0;
+}

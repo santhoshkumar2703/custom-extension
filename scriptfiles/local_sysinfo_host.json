@@ -1,0 +1,9 @@
+{
+  "name": "local_sysinfo_host",
+  "description": "Linux System Info Host",
+  "path": "/home/me/.local/bin/local_sysinfo_host.py",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://jmenaanehoenbcajacoapjmjmjpancmb/"
+  ]
+}
